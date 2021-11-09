@@ -15,3 +15,12 @@ module.exports.home = async (req, res) => {
         projects: projects
     });
 }
+
+module.exports.project = async (req, res) => {
+    const name = req.params.name;
+    const resp = await axios(`https://api.github.com/repos/1-irdA/${name}?q=github+api=${config.api}`);
+    const project = new Project(resp.data);
+    res.render('project', {
+        project: project
+    });
+}
