@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Adrien GARROUSTE</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<header id="header">
+			<div class="inner">
+				<h1><strong>Adrien GARROUSTE</strong>, <br/>développeur.</h1>
+			</div>
+		</header>
+
+		<div id="main">
+			<section id="one">
+				<header class="major">
+					<h2>Présentation</h2>
+				</header>
+			</section>
+
+			<section>
+				<p>
+					<span class="image left">
+						<img src="images/avatar.jpg" alt="Profile image" />
+					</span>
+					Étudiant en M1 MIAGE à l'université Paul Sabatier à Toulouse.<br/>
+					Passionné par l'informatique, je réalise de nombreux projets personnels durant mon temps libre.<br/><br/>
+					Le sport a également une place importante dans ma vie, je pratique la musculation, la course à pied et ai pratiqué le Taekwondo pendant 5 ans.<br/><br/>
+					Je vous invite à explorer ce site pour voir les projets que j'ai réalisé et les technologies que j'utilise.<br/><br/><br/>
+			</section>	
+
+			<section id="two">
+				<% if (locals.projects && projects.length > 0) { %>
+					<h2>Projets de <%= new Date().getFullYear() %></h2>
+					<div class="row">
+						<% for (const project of projects) { %>
+							<article class="col-6 col-12-xsmall work-item">
+								<h3><%= project.name %></h3>
+								<p><%= project.description %></p>
+								<p class="bold"><%= project.language %></p>
+							</article>
+						<% } %>
+					</div>
+				<% } %>
+				<a href="http://html5up.net">HTML5 UP</a>
+			</section>	
+		</div>
+
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://github.com/1-irdA" class="icon brands fa-github"><span class="label">Github</span></a></li>
+					<li><a href="https://fr.linkedin.com/in/adrien-garrouste-7b747117b" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					<li><a href="CV.pdf" class="icon solid fa-file-pdf"><span class="label">CV</span></a></li>
+				</ul>
+			</div>
+		</footer>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.poptrox.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
