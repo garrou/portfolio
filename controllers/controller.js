@@ -1,8 +1,8 @@
-const express = require('express');
-const service = require('../services/service');
-const router = express.Router();
+const { Router } = require('express');
+const { home, projects } = require('../services/service');
+const router = Router();
 
-router.get('/', service.home);
-router.get('/projects/:name', service.project);
+router.get('/', home);
+router.get('/projects', projects);
 
 module.exports = router;
