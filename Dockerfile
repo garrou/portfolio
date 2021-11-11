@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:latest AS build
 
 WORKDIR /app
 
@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 8100
+RUN npm run build
 
-CMD npm start
+FROM nginx:latest
+
+COPY --from=build /app/public /usr/share/nginx/html

@@ -1,8 +1,12 @@
 # portfolio
 
-- Run
+- Run   
 
 ```sh
 docker build -t site .
-docker run -p 8100:8100 -d site
+docker run --rm -p 5000:80 -d site
 ```
+
+- Access    
+
+http://localhost:5000       
