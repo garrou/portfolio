@@ -7,17 +7,17 @@
 	export let username;
 
 	let projects = [];
-
+	
 	onMount(async () => {
-		const res = await fetch(`https://api.github.com/users/${username}/repos`, {
-			'headers': {
-                'Authorization': apiKey
-            }
-		});
-		projects = (await res.json())
-					.map((json) => new ProjectModel(json))
-					.sort((a, b) => b.createdAt - a.createdAt)
-					.filter(project => project.name != username);
+		try {
+			const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=created`, {
+				'headers': {
+                	'Authorization': apiKey
+            	}	
+			});
+			projects = (await res.json()).map((json) => new ProjectModel(json))
+						.filter(project => project.name != username);						
+		} catch (err) {}
 	});
 </script>
 
@@ -48,7 +48,7 @@
           </div>
         </div>
 
-		<p class="fs-5">Certains de mes projets</p>
+		<p class="fs-5">Mes projets</p>
 
 		<div class="row align-items-md-stretch mt-2">
 			{#each projects as project}
