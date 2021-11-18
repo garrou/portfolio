@@ -6,19 +6,45 @@
 	export let apiKey;
 	export let username;
 
+	const url = `https://api.github.com/users/${username}/repos?per_page=100&sort=created`;
+	const now = new Date();
+    const limit = new Date(1900 + now.getYear(), now.getMonth(), 1);
 	let projects = [];
-	
-	onMount(async () => {
-		try {
-			const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=created`, {
-				'headers': {
-                	'Authorization': apiKey
-            	}	
-			});
-			projects = (await res.json()).map((json) => new ProjectModel(json))
-						.filter(project => project.name != username);						
-		} catch (err) {}
-	});
+	let isAllLoaded = false;
+
+	onMount(loadLess);
+
+	async function loadProjects() {
+		if (isAllLoaded) {
+			loadLess();
+		} else {
+			loadAll();
+		}
+	}
+
+	async function loadLess() {
+		const res = await fetch(url, {
+			'headers': {
+                'Authorization': apiKey
+            }
+		});
+		isAllLoaded = false;
+		projects = (await res.json())
+					.map((json) => new ProjectModel(json))
+					.filter(project => project.createdAt >= limit);	
+	}
+
+	async function loadAll() {
+		const res = await fetch(url, {
+			'headers': {
+                'Authorization': apiKey
+            }
+		});
+		isAllLoaded = true;
+		projects = (await res.json())
+					.map((json) => new ProjectModel(json))
+					.filter(project => project.name != username);	
+	}
 </script>
 
 <main>
@@ -48,7 +74,13 @@
           </div>
         </div>
 
-		<p class="fs-5">Mes projets</p>
+		<button class="btn btn-dark mb-2" on:click={loadProjects}>
+			{#if isAllLoaded}
+				<i class="bi bi-dash-lg">&nbsp;Voir moins</i>
+			{:else}
+				<i class="bi bi-plus-lg">&nbsp;Voir plus</i>
+			{/if}
+		</button>
 
 		<div class="row align-items-md-stretch mt-2">
 			{#each projects as project}
