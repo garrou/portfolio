@@ -13,7 +13,7 @@
         {#each activities as activity}
             <tr>
                 <td>
-                    <a class="text-white" href={activity.link}>{activity.repo}</a>
+                    <a class="text-white" href="{activity.link}">{activity.repo}</a>
                 </td>
                 <td>{activity.date}</td>
             </tr>

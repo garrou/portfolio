@@ -19,6 +19,10 @@
                     </p>
                 {/if}
                 <a href="{project.htmlUrl}" class="btn btn-outline-light"><i class="bi bi-github"></i></a>
+
+                {#if project.homepage}
+                    <a href="{project.homepage}" class="btn btn-outline-light"><i class="bi bi-link-45deg"></i></a>
+                {/if}
             </div>
         </div>
     {/each}
