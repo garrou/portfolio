@@ -6,7 +6,7 @@ class ActivityModel {
     constructor(json) {
         this.login = json['actor']['login'];
         this.repo = json['repo']['name'];
-        this.repoUrl = "https://github.com/" + this.repo;
+        this.link = "https://github.com/" + this.repo;
         this.date = new Date(json['created_at']).toLocaleDateString();
     }
 }

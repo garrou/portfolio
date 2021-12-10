@@ -57,7 +57,8 @@
             }
 		}); 
 		activities = (await res.json())
-					.map((json) => new ActivityModel(json));
+					.map((json) => new ActivityModel(json))
+					.filter(activity => activity.login === username);
 	}
 </script>
 
