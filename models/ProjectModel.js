@@ -9,7 +9,7 @@ class ProjectModel {
         this.htmlUrl = json['html_url'];
         this.language = json['language'];
         this.topics = json['topics'];
-        this.createdAt = new Date(json['created_at'])
+        this.createdAt = new Date(json['created_at']).toLocaleDateString();
     }
 }
 
