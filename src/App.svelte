@@ -1,50 +1,64 @@
 <script>
-	import Project from './Project.svelte';
+	import Activities from './Activities.svelte';
+	import Projects from './Projects.svelte';
 	import { onMount } from 'svelte';
+	import ActivityModel from '../models/ActivityModel';
 	import ProjectModel from '../models/ProjectModel';
 
 	export let apiKey;
 	export let username;
 
-	const now = new Date();
-    const limit = new Date(1900 + now.getYear(), now.getMonth(), 1);
+	const repoUrl = `https://api.github.com/users/${username}/repos?per_page=100&sort=created`;
+	const activitiesUrl = `https://api.github.com/users/${username}/events/public?per_page=10`;
+
 	let projects = [];
+	let activities = [];
 	let isAllLoaded = false;
 
-	onMount(loadLess);
+	onMount(loadLessRepo);
+	onMount(loadActivities);
 
 	async function loadProjects() {
 		if (isAllLoaded) {
-			loadLess();
+			loadLessRepo();
 		} else {
-			loadAll();
+			loadAllRepo();
 		}
 	}
 
-	async function loadLess() {
-		const res = await fetch(`https://api.github.com/users/${username}/repos`, {
+	async function loadLessRepo() {
+		const res = await fetch(repoUrl, {
 			'headers': {
                 'Authorization': apiKey
             }
 		});
 		isAllLoaded = false;
 		projects = (await res.json())
-						.map((json) => new ProjectModel(json))
-						.sort((a, b) => b.createdAt - a.createdAt)
-						.filter(project => project.createdAt >= limit);	
+					.map((json) => new ProjectModel(json))
+					.slice(0, 3);
 	}
 
-	async function loadAll() {
-		const res = await fetch(`https://api.github.com/users/${username}/repos`, {
+	async function loadAllRepo() {
+		const res = await fetch(repoUrl, {
 			'headers': {
                 'Authorization': apiKey
             }
 		});
 		isAllLoaded = true;
 		projects = (await res.json())
-						.map((json) => new ProjectModel(json))
-						.sort((a, b) => b.createdAt - a.createdAt)
-						.filter(project => project.name != username);	
+					.map((json) => new ProjectModel(json))
+					.filter(project => project.name != username);	
+	}
+
+	async function loadActivities() {
+		const res = await fetch(activitiesUrl, {
+			'headers': {
+                'Authorization': apiKey
+            }
+		}); 
+		activities = (await res.json())
+					.map((json) => new ActivityModel(json))
+					.filter(activity => activity.login === username);
 	}
 </script>
 
@@ -75,18 +89,22 @@
           </div>
         </div>
 
-		<button class="btn btn-dark mb-2" on:click={loadProjects}>
-			{#if isAllLoaded}
-				<i class="bi bi-dash-lg">&nbsp;Voir moins</i>
-			{:else}
-				<i class="bi bi-plus-lg">&nbsp;Voir plus</i>
-			{/if}
-		</button>
+		<p class="fs-5">Activités récentes</p>
 
-		<div class="row align-items-md-stretch mt-2">
-			{#each projects as project}
-				<Project project={ project } />
-			{/each}
+		<Activities activities={activities} />
+
+		<p class="fs-5">Projets</p>
+
+		<Projects projects={projects} />
+
+		<div class="text-center">
+			<button class="btn btn-dark mb-2" on:click={loadProjects}>
+				{#if isAllLoaded}
+					<i class="bi bi-dash-lg">&nbsp;Voir moins</i>
+				{:else}
+					<i class="bi bi-plus-lg">&nbsp;Voir plus</i>
+				{/if}
+			</button>
 		</div>
 	</div>
 </main>
