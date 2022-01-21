@@ -84,6 +84,7 @@
                   </p>
 				  <a href="https://github.com/1-irdA"><i class="bi bi-github fs-2 text-dark me-2"></i></a>
 				  <a href="https://fr.linkedin.com/in/adrien-garrouste-7b747117b"><i class="bi bi-linkedin fs-2 text-dark"></i></a>
+				  <a href="CV.pdf" target="_blank"><i class="bi bi-file-pdf fs-2 text-dark me-2"></i></a>
                 </div>
               </div>
           </div>
