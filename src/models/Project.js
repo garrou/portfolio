@@ -1,11 +1,11 @@
-class ProjectModel {
+class Project {
 
     /**
      * @param {json} json 
      */
     constructor(json) {
         this.name = json['name'];
-        this.description = json['description'];
+        this.description = json['description'] == null ? '' : json['description'];
         this.htmlUrl = json['html_url'];
         this.language = json['language'];
         this.topics = json['topics'];
@@ -14,4 +14,4 @@ class ProjectModel {
     }
 }
 
-module.exports = ProjectModel;
+module.exports = Project;

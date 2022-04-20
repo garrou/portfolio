@@ -1,28 +1,24 @@
 <script>
-	import Activities from './Activities.svelte';
-	import Projects from './Projects.svelte';
+
+	import ProjectCard from './components/ProjectCard.svelte';
 	import { onMount } from 'svelte';
-	import ActivityModel from '../models/ActivityModel';
-	import ProjectModel from '../models/ProjectModel';
+	import Project from './models/Project';
 
 	export let apiKey;
 	export let username;
 
 	const repoUrl = `https://api.github.com/users/${username}/repos?per_page=100&sort=created`;
-	const activitiesUrl = `https://api.github.com/users/${username}/events/public?per_page=10`;
 
 	let projects = [];
-	let activities = [];
 	let isAllLoaded = false;
 
 	onMount(loadLessRepo);
-	onMount(loadActivities);
 
 	async function loadProjects() {
 		if (isAllLoaded) {
-			loadLessRepo();
+			await loadLessRepo();
 		} else {
-			loadAllRepo();
+			await loadAllRepo();
 		}
 	}
 
@@ -34,7 +30,7 @@
 		});
 		isAllLoaded = false;
 		projects = (await res.json())
-					.map((json) => new ProjectModel(json))
+					.map((json) => new Project(json))
 					.slice(0, 3);
 	}
 
@@ -46,19 +42,8 @@
 		});
 		isAllLoaded = true;
 		projects = (await res.json())
-					.map((json) => new ProjectModel(json))
-					.filter(project => project.name != username);	
-	}
-
-	async function loadActivities() {
-		const res = await fetch(activitiesUrl, {
-			'headers': {
-                'Authorization': apiKey
-            }
-		}); 
-		activities = (await res.json())
-					.map((json) => new ActivityModel(json))
-					.filter(activity => activity.login === username);
+					.map((json) => new Project(json))
+					.filter(project => project.name !== username);
 	}
 </script>
 
@@ -90,13 +75,13 @@
           </div>
         </div>
 
-		<p class="fs-5">Activités récentes</p>
-
-		<Activities activities={activities} />
-
 		<p class="fs-5">Projets</p>
 
-		<Projects projects={projects} />
+        <div class="row align-items-md-stretch mt-2">
+            {#each projects as project}
+		        <ProjectCard project={project} />
+            {/each}
+        </div>
 
 		<div class="text-center">
 			<button class="btn btn-dark mb-2" on:click={loadProjects}>
