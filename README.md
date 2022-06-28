@@ -4,7 +4,7 @@
 
 ```sh
 docker build -t portfolio .
-docker run --rm -p 5000:80 -d portfolio
+docker run --rm -p 5000:80 --name portfolio -d portfolio
 ```
 
 - Access    

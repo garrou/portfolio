@@ -5,7 +5,7 @@ class Project {
      */
     constructor(json) {
         this.name = json['name'];
-        this.description = json['description'] == null ? '' : json['description'];
+        this.description = json['description'];
         this.htmlUrl = json['html_url'];
         this.language = json['language'];
         this.topics = json['topics'];

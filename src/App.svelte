@@ -1,5 +1,4 @@
 <script>
-
 	import ProjectCard from './components/ProjectCard.svelte';
 	import { onMount } from 'svelte';
 	import Project from './models/Project';
@@ -64,10 +63,10 @@
                 <div class="col-md-8">
                   <h1 class="display-5 fw-bold">Développeur</h1>
                   <p class="col-md-8 fs-5">
-                      Étudiant en M1 MIAGE à l'université Paul Sabatier à Toulouse.
+                      Étudiant en M2 MIAGE à l'université Paul Sabatier à Toulouse.
 					  Passionné par l'informatique, je réalise des projets personnels durant mon temps libre.
                   </p>
-				  <a href="https://github.com/1-irdA"><i class="bi bi-github fs-2 text-dark me-2"></i></a>
+				  <a href="https://github.com/garrou"><i class="bi bi-github fs-2 text-dark me-2"></i></a>
 				  <a href="https://fr.linkedin.com/in/adrien-garrouste-7b747117b"><i class="bi bi-linkedin fs-2 text-dark"></i></a>
 				  <a href="CV.pdf" target="_blank"><i class="bi bi-file-pdf fs-2 text-dark me-2"></i></a>
                 </div>
