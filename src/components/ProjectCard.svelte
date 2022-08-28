@@ -2,24 +2,20 @@
     export let project;
 </script>
 
-<div class="col-md-4 mb-4">
-    <div class="h-100 p-5 text-white bg-dark rounded">
-        <h2>{project.name}</h2>
-        <p class="fw-bold text-muted fs-5">{project.language}</p>
-        <p>{project.description}</p>
-        <p>{project.createdAt}</p>
+<div class="col-md-4 mb-5">
+    <div class="h-50 text-black rounded">
+        <i class="bi bi-journal-code fs-4"></i>
+        <a href="{project.htmlUrl}" class="text text-primary">{project.name}</a>
 
-        {#if project.topics}
-            <p>
-                {#each project.topics as topic}
-                    <span class="badge rounded-pill bg-dark">{ topic }</span>
-                {/each}
-            </p>
+        {#if project.description}
+            <p class="mt-2">{project.description}</p>
         {/if}
-        <a href="{project.htmlUrl}" class="btn btn-outline-light"><i class="bi bi-github"></i></a>
 
-        {#if project.homepage}
-            <a href="{project.homepage}" class="btn btn-outline-light"><i class="bi bi-link-45deg"></i></a>
+        {#if project.language}
+            <p>
+                <span class="color-badge" style="background-color: {project.color}"></span>
+                {project.language}
+            </p>
         {/if}
     </div>
 </div>

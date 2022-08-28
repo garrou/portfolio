@@ -2,15 +2,14 @@ class Project {
 
     /**
      * @param {json} json 
+     * @param {colors} json
      */
-    constructor(json) {
+    constructor(json, colors) {
         this.name = json['name'];
         this.description = json['description'] == null ? '' : json['description'];
         this.htmlUrl = json['html_url'];
         this.language = json['language'];
-        this.topics = json['topics'];
-        this.createdAt = new Date(json['created_at']).toLocaleDateString();
-        this.homepage = json['homepage'];
+        this.color = colors[json['language']];
     }
 }
 
