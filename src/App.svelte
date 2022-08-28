@@ -30,8 +30,11 @@
 	<div class="container py-4">
         <Header firstname="Adrien" lastname="GARROUSTE" />
     
-        <Intro picture="profile.jpg" title="Développeur" intro="Étudiant en M2 MIAGE à l'université Paul Sabatier à Toulouse.
-		Passionné par l'informatique, je réalise des projets personnels durant mon temps libre." />
+        <Intro 
+			picture="profile.jpg" 
+			title="Développeur" 
+			intro="Étudiant en M2 MIAGE à l'université Paul Sabatier à Toulouse.
+					Passionné par l'informatique, je réalise des projets personnels durant mon temps libre." />
 
         <div class="row align-items-md-stretch mt-2">
             {#each projects as project}
