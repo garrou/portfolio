@@ -22,7 +22,8 @@
             }
 		});
 		projects = (await res.json())
-					.map((json) => new Project(json, colors));
+					.map((json) => new Project(json, colors))
+					.filter(project => project.name !== username);
 	}
 </script>
 
