@@ -1,9 +1,9 @@
 <script>
-	import Header from './components/Header.svelte';
-	import Intro from './components/Intro.svelte';
-	import ProjectCard from './components/ProjectCard.svelte';
-	import Project from './models/Project';
-	import { onMount } from 'svelte';
+	import Header from "./components/Header.svelte";
+	import Intro from "./components/Intro.svelte";
+	import ProjectCard from "./components/ProjectCard.svelte";
+	import Project from "./models/Project";
+	import { onMount } from "svelte";
 
 	export let apiKey;
 	export let username;
@@ -14,33 +14,36 @@
 
 	onMount(loadRepo);
 
-
 	async function loadRepo() {
 		const res = await fetch(repoUrl, {
-			'headers': {
-                'Authorization': apiKey
-            }
+			headers: {
+				Authorization: apiKey,
+			},
 		});
 		projects = (await res.json())
-					.map((json) => new Project(json, colors))
-					.filter(project => project.name !== username);
+			.map((json) => new Project(json, colors))
+			.filter((project) => project.name !== username);
 	}
 </script>
 
 <main>
 	<div class="container py-4">
-        <Header firstname="Adrien" lastname="GARROUSTE" />
-    
-        <Intro 
-			picture="profile.jpg" 
-			title="Développeur" 
-			intro="Étudiant en M2 MIAGE à l'université Paul Sabatier à Toulouse.
-					Passionné par l'informatique, je réalise des projets personnels durant mon temps libre." />
+		<Header firstname="Adrien" lastname="GARROUSTE" />
 
-        <div class="row align-items-md-stretch mt-2">
-            {#each projects as project}
-		        <ProjectCard project={project} />
-            {/each}
-        </div>
+		<Intro
+			picture="profile.jpg"
+			title="Developer"
+			sentences={[
+				"Student in Master MIAGE at Paul Sabatier University in Toulouse.",
+				"Master MIAGE equivalent to a Master's level degree in computing, programming, databases design, project management.",
+				"Passionate about computer science, I realize side projects during my free time.",
+			]}
+		/>
+
+		<div class="row align-items-md-stretch mt-2">
+			{#each projects as project}
+				<ProjectCard {project} />
+			{/each}
+		</div>
 	</div>
 </main>
