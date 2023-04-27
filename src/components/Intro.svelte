@@ -31,7 +31,7 @@
   h1 {
     text-transform: uppercase;
     letter-spacing: 6px;
-    font-size: 48px;
+    font-size: 40px;
   }
 
   .picture {
@@ -42,7 +42,6 @@
 
   .subtitle {
     font-size: 20px;
-    font-weight: 300;
     letter-spacing: 4px;
     text-transform: uppercase;
   }
