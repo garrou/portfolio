@@ -6,7 +6,6 @@
 	<Intro
 		firstname="Adrien"
 		lastname="GARROUSTE"
-		picture="images/profile.jpg"
 		title="Developer / DevOps"
 		sentences={[
 			"Student in Master MIAGE at Paul Sabatier University in Toulouse.",

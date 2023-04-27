@@ -1,13 +1,11 @@
 <script>
   export let firstname;
   export let lastname;
-  export let picture;
   export let title;
   export let sentences;
 </script>
 
 <main>
-  <img class="picture" src={picture} alt="profil" />
   <h1>{firstname} {lastname}</h1>
   <p class="subtitle">{title}</p>
 
@@ -34,12 +32,6 @@
     font-size: 40px;
   }
 
-  .picture {
-    border-radius: 50%;
-    width: 200;
-    height: 200px;
-  }
-
   .subtitle {
     font-size: 20px;
     letter-spacing: 4px;
@@ -48,6 +40,10 @@
 
   .sentences {
     margin-top: 3%;
+  }
+
+  .sentences p {
+    text-justify: auto;
   }
 
   .networks {
