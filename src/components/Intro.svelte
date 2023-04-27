@@ -55,7 +55,7 @@
   }
 
   .icons {
-    height: 50px;
-    width: 50px;
+    height: 5%;
+    width: 5%;
   }
 </style>
