@@ -1,49 +1,27 @@
 <script>
-	import Header from "./components/Header.svelte";
 	import Intro from "./components/Intro.svelte";
-	import ProjectCard from "./components/ProjectCard.svelte";
-	import Project from "./models/Project";
-	import { onMount } from "svelte";
-
-	export let apiKey;
-	export let username;
-	export let colors;
-
-	const repoUrl = `https://api.github.com/users/${username}/repos?per_page=100&sort=created`;
-	let projects = [];
-
-	onMount(loadRepo);
-
-	async function loadRepo() {
-		const res = await fetch(repoUrl, {
-			headers: {
-				Authorization: apiKey,
-			},
-		});
-		projects = (await res.json())
-			.map((json) => new Project(json, colors))
-			.filter((project) => project.name !== username);
-	}
 </script>
 
 <main>
-	<div class="container py-4">
-		<Header firstname="Adrien" lastname="GARROUSTE" />
-
-		<Intro
-			picture="profile.jpg"
-			title="Developer"
-			sentences={[
-				"Student in Master MIAGE at Paul Sabatier University in Toulouse.",
-				"Master MIAGE equivalent to a Master's level degree in computing, programming, databases design, project management.",
-				"Passionate about computer science, I realize side projects during my free time.",
-			]}
-		/>
-
-		<div class="row align-items-md-stretch mt-2">
-			{#each projects as project}
-				<ProjectCard {project} />
-			{/each}
-		</div>
-	</div>
+	<Intro
+		firstname="Adrien"
+		lastname="GARROUSTE"
+		picture="images/profile.jpg"
+		title="Developer / DevOps"
+		sentences={[
+			"Student in Master MIAGE at Paul Sabatier University in Toulouse.",
+			"Master MIAGE equivalent to a Master's level degree in computing, programming, databases design, project management.",
+			"Passionate about computer science, I realize side projects during my free time."
+		]}
+	/>
 </main>
+
+<style>
+	main {
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+</style>
