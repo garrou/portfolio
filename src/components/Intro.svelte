@@ -19,7 +19,7 @@
     <a href="https://github.com/garrou">
       <img class="icons" src="icons/github.svg" alt="Github logo" />
     </a>
-    <a href="https://fr.linkedin.com/in/adrien-garrouste-7b747117b">
+    <a href="https://linkedin.com/in/adriengarrouste">
       <img class="icons" src="icons/linkedin.svg" alt="Linkedin logo" />
     </a>
   </div>
