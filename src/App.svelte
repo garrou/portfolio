@@ -6,9 +6,9 @@
 	<Intro
 		firstname="Adrien"
 		lastname="GARROUSTE"
-		title="Developer / DevOps"
+		title="Fullstack developer at Efficy"
 		sentences={[
-			"Student in Master MIAGE at Paul Sabatier University in Toulouse.",
+			"Former student in Master MIAGE at Paul Sabatier University in Toulouse.",
 			"Master MIAGE equivalent to a Master's level degree in computing, programming, databases design, project management.",
 			"Passionate about computer science, I realize side projects during my free time."
 		]}
