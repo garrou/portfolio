@@ -12,6 +12,13 @@
 			"Master MIAGE equivalent to a Master's level degree in computing, programming, databases design, project management.",
 			"Passionate about computer science, I realize side projects during my free time."
 		]}
+		networks={
+			[
+				{ name: "Github", url: "https://github.com/garrou" },
+				{ name: "Linkedin", url: "https://linkedin.com/in/adriengarrouste" },
+				{ name: "Strava", url: "https://strava.com/athletes/87349975" }
+			]
+		}
 	/>
 </main>
 

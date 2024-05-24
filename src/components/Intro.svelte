@@ -3,6 +3,7 @@
   export let lastname;
   export let title;
   export let sentences;
+  export let networks;
 </script>
 
 <main>
@@ -16,12 +17,11 @@
   </div>
 
   <div class="networks">
-    <a href="https://github.com/garrou">
-      <img class="icons" src="icons/github.svg" alt="Github logo" />
+    {#each networks as network}
+    <a href="{ network.url }">
+      <img class="icons" src="icons/{ network.name.toLowerCase() }.svg" alt="{ network.name } logo" />
     </a>
-    <a href="https://linkedin.com/in/adriengarrouste">
-      <img class="icons" src="icons/linkedin.svg" alt="Linkedin logo" />
-    </a>
+    {/each}
   </div>
 </main>
 
