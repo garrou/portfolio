@@ -32,6 +32,10 @@
     font-size: 40px;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   .subtitle {
     font-size: 20px;
     letter-spacing: 4px;
