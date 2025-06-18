@@ -1,0 +1,49 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    overflow-y: hidden;
+}
+
+body {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-size: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.subtitle {
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.sentences {
+    margin-top: 3%;
+}
+
+.sentences p {
+    text-justify: auto;
+}
+
+.networks {
+    margin: 2%;
+}
+
+.networks a {
+    margin: 0 2% 0 2%;
+}
+
+.icon {
+    height: 5%;
+    width: 5%;
+}
