@@ -79,6 +79,4 @@ function createIntroComponent(data) {
     container.appendChild(networksDiv);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    createIntroComponent(introData);
-});
+document.addEventListener("DOMContentLoaded", createIntroComponent(introData));
