@@ -72,7 +72,7 @@ function createIntroComponent(data) {
 
     const networksDiv = createElement("div", null, "networks");
     data.networks.forEach(network => {
-        const a = createLinkElement("a", network.url, null);
+        const a = createLinkElement(network.url, null);
         a.appendChild(createImageElement(`images/${network.name.toLowerCase()}.svg`, `${network.name} logo`, "icon"));
         networksDiv.appendChild(a);
     });
